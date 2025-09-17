@@ -1,12 +1,17 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const dotenv = require('dotenv');
 const uploadRouter = require('./routes/upload');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://homechef-my51.vercel.app', // your frontend URL
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 
